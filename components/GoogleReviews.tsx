@@ -44,7 +44,7 @@ export default async function GoogleReviews() {
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-          {data.reviews.map((review, i) => (
+          {data.reviews.filter((r) => r.rating >= 4).map((review, i) => (
             <div key={i} className="bg-[var(--color-accent)]/20 rounded-xl p-6 border border-gray-100">
               <div className="flex items-start justify-between mb-3">
                 <div>
