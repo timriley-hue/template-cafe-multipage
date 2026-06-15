@@ -1,0 +1,21 @@
+{
+  "hero": {
+    "headline": "Great coffee. Good people.",
+    "subheading": "Freshly roasted, made to order. Find us in the heart of Tenterden.",
+    "cta": { "label": "See our menu", "href": "/menu" }
+  },
+  "faq": [
+    {
+      "question": "Do you have parking nearby?",
+      "answer": "Yes — there is a free car park on Recreation Ground Road, a 2-minute walk away."
+    },
+    {
+      "question": "Do you cater for dietary requirements?",
+      "answer": "Yes. We offer plant-based milks, gluten-free options, and can adapt most dishes. Ask a member of staff."
+    },
+    {
+      "question": "Can I book a table?",
+      "answer": "We're walk-in only. During busy periods we operate a short waiting list at the door."
+    }
+  ]
+}
