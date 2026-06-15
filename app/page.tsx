@@ -1,6 +1,8 @@
 import Link from "next/link";
 import homeContent from "@/content/home.json";
 import hours from "@/content/hours.json";
+import modules from "@/content/modules.json";
+import GoogleReviews from "@/components/GoogleReviews";
 
 export default function HomePage() {
   const { hero, faq } = homeContent;
@@ -64,6 +66,9 @@ export default function HomePage() {
           </Link>
         </div>
       </section>
+
+      {/* Google Reviews */}
+      {modules.googleReviews && <GoogleReviews />}
 
       {/* FAQ */}
       <section className="py-20 px-4 bg-[var(--color-accent)]/30">

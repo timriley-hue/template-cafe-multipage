@@ -3,14 +3,19 @@
 import { useState } from "react";
 import Link from "next/link";
 import site from "@/content/site.json";
+import modules from "@/content/modules.json";
 
-const nav = [
+const baseNav = [
   { label: "Menu", href: "/menu" },
   { label: "About", href: "/about" },
-  { label: "Gallery", href: "/gallery" },
-  { label: "News", href: "/blog" },
+  { label: "Gallery", href: "/gallery", module: "gallery" },
+  { label: "News", href: "/blog", module: "blog" },
   { label: "Contact", href: "/contact" },
-];
+] as const;
+
+const nav = baseNav.filter(
+  (item) => !("module" in item) || modules[item.module as keyof typeof modules]
+);
 
 export default function SiteHeader() {
   const [open, setOpen] = useState(false);
