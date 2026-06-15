@@ -1,5 +1,7 @@
 # About Us
 
-We've been serving the local community since 2018. Our coffee is sourced from small, independent roasters and our food is made fresh every morning.
+We opened in 2018 with one espresso machine and six tables. The tables are the same. The machine has been upgraded once.
 
-We believe a great cup of coffee should be simple, honest, and worth coming back for.
+We source our coffee from a small roastery in East Sussex and try to keep the food simple — things made here, that morning, with decent ingredients. No frozen pastries, no packet soups.
+
+We're independent, which means we actually own the place, and we're here most days. If something isn't right, tell us.
