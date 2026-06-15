@@ -34,6 +34,18 @@ Then open http://localhost:3001
 | `content/home.json` | Homepage hero text and FAQ items |
 | `content/blog/` | Blog posts — one Markdown file per post |
 
+## Database setup (Tier 2 — client editing)
+
+Content can optionally be moved from files to Supabase, allowing clients to log in and edit their own menu, hours, blog posts, and prices via a password-protected admin panel.
+
+All clients share one Supabase project. Each client gets their own tables, isolated by row-level security. When you clone this template for a new client, run the setup script to create their tables in the shared project:
+
+```bash
+npm run setup-client
+```
+
+(Script to be built — will prompt for client name and create the required tables.)
+
 ## Environment variables
 
 ```
