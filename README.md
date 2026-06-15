@@ -46,7 +46,12 @@ npm run setup-client
 
 This will prompt for the client name, slug, and admin login credentials, then create everything in Supabase automatically. It also outputs the environment variables you need to add to `.env.local` and Vercel.
 
-Once the script has run, set `clientEditing: true` in `content/modules.json` and the site will read from Supabase instead of files. The `/admin` panel becomes active and the client can log in to manage their content.
+Once the script has run:
+1. Add the environment variables it outputs to `.env.local` and to Vercel
+2. Set `clientEditing: true` in `content/modules.json`
+3. Redeploy
+
+The site will now read from Supabase instead of files. The `/admin` panel becomes active and the client can log in at `yourdomain.com/admin` to manage their content.
 
 **Supabase schema** is in `supabase/schema.sql` — run this once in your shared Supabase project before using the setup script for the first time.
 
