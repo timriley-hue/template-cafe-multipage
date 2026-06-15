@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import Link from "next/link";
 import site from "@/content/site.json";
 import modules from "@/content/modules.json";
@@ -19,47 +19,71 @@ const nav = baseNav.filter(
 
 export default function SiteHeader() {
   const [open, setOpen] = useState(false);
+  const [scrolled, setScrolled] = useState(false);
+
+  useEffect(() => {
+    const onScroll = () => setScrolled(window.scrollY > 10);
+    window.addEventListener("scroll", onScroll, { passive: true });
+    return () => window.removeEventListener("scroll", onScroll);
+  }, []);
 
   return (
-    <header className="sticky top-0 z-50 bg-[var(--color-brand)] text-[var(--color-brand-text)] shadow-md">
+    <header
+      className={`sticky top-0 z-50 bg-[var(--color-brand)] text-[var(--color-brand-text)] transition-shadow duration-200 ${
+        scrolled ? "shadow-lg" : "shadow-sm"
+      }`}
+    >
       <div className="max-w-5xl mx-auto px-4 flex items-center justify-between h-16">
-        <Link href="/" className="font-bold text-xl tracking-tight" style={{ fontFamily: "var(--font-heading)" }}>
+        <Link
+          href="/"
+          className="font-bold text-lg tracking-tight hover:opacity-80 transition-opacity"
+          style={{ fontFamily: "var(--font-heading)" }}
+        >
           {site.name}
         </Link>
 
         {/* Desktop nav */}
-        <nav className="hidden md:flex gap-8 text-sm font-medium">
+        <nav className="hidden md:flex items-center gap-7 text-sm font-medium">
           {nav.map((item) => (
             <Link
               key={item.href}
               href={item.href}
-              className="hover:opacity-75 transition-opacity"
+              className="opacity-90 hover:opacity-100 transition-opacity"
             >
               {item.label}
             </Link>
           ))}
+          {modules.orderOnline && (
+            <a
+              href="#order"
+              className="ml-2 bg-white/15 hover:bg-white/25 px-4 py-1.5 rounded-full text-sm font-medium transition-colors"
+            >
+              Order online
+            </a>
+          )}
         </nav>
 
         {/* Mobile burger */}
         <button
-          className="md:hidden p-2"
+          className="md:hidden p-2 -mr-2"
           onClick={() => setOpen(!open)}
           aria-label="Toggle menu"
+          aria-expanded={open}
         >
-          <span className="block w-5 h-0.5 bg-current mb-1" />
-          <span className="block w-5 h-0.5 bg-current mb-1" />
-          <span className="block w-5 h-0.5 bg-current" />
+          <span className={`block w-5 h-0.5 bg-current transition-all ${open ? "rotate-45 translate-y-1.5" : "mb-1.5"}`} />
+          <span className={`block w-5 h-0.5 bg-current transition-all ${open ? "opacity-0" : "mb-1.5"}`} />
+          <span className={`block w-5 h-0.5 bg-current transition-all ${open ? "-rotate-45 -translate-y-1.5" : ""}`} />
         </button>
       </div>
 
       {/* Mobile menu */}
       {open && (
-        <nav className="md:hidden bg-[var(--color-brand-dark)] px-4 py-4 flex flex-col gap-4 text-sm font-medium">
+        <nav className="md:hidden bg-[var(--color-brand-dark)] px-4 py-5 flex flex-col gap-5 text-sm font-medium border-t border-white/10">
           {nav.map((item) => (
             <Link
               key={item.href}
               href={item.href}
-              className="hover:opacity-75 transition-opacity"
+              className="opacity-80 hover:opacity-100 transition-opacity"
               onClick={() => setOpen(false)}
             >
               {item.label}

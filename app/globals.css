@@ -5,16 +5,15 @@
   --color-brand-dark: #1a3d1b;
   --color-brand-text: #ffffff;
   --color-accent: #f5e6c8;
-  --color-stone-50: #fafaf9;
-  --font-heading: Georgia, serif;
-  --font-body: system-ui, sans-serif;
+  --font-heading: "Playfair Display", Georgia, serif;
+  --font-body: "Inter", system-ui, sans-serif;
 }
 
-/* Client theme overrides — injected via layout.tsx from content/theme.json */
 body {
   font-family: var(--font-body);
   color: #1a1a1a;
   background: #fff;
+  -webkit-font-smoothing: antialiased;
 }
 
 h1, h2, h3, h4 {
