@@ -36,15 +36,28 @@ Then open http://localhost:3001
 
 ## Database setup (Tier 2 — client editing)
 
-Content can optionally be moved from files to Supabase, allowing clients to log in and edit their own menu, hours, blog posts, and prices via a password-protected admin panel.
+Content can optionally be moved from files to Supabase, allowing clients to log in and edit their own menu, hours, blog posts, and FAQ via a password-protected `/admin` panel.
 
-All clients share one Supabase project. Each client gets their own tables, isolated by row-level security. When you clone this template for a new client, run the setup script to create their tables in the shared project:
+All clients share one Supabase project. Each client gets their own rows in shared tables, isolated by row-level security. When you clone this template for a new client, run the setup script to create their records and seed them from the content files:
 
 ```bash
 npm run setup-client
 ```
 
-(Script to be built — will prompt for client name and create the required tables.)
+This will prompt for the client name, slug, and admin login credentials, then create everything in Supabase automatically. It also outputs the environment variables you need to add to `.env.local` and Vercel.
+
+Once the script has run, set `clientEditing: true` in `content/modules.json` and the site will read from Supabase instead of files. The `/admin` panel becomes active and the client can log in to manage their content.
+
+**Supabase schema** is in `supabase/schema.sql` — run this once in your shared Supabase project before using the setup script for the first time.
+
+### Admin panel sections
+
+| Section | What the client can edit |
+|---|---|
+| Hours | Opening times, add or remove rows |
+| Menu | Categories, items, prices, dietary tags |
+| Blog | Write, edit, and delete news posts |
+| FAQ | Questions and answers on the homepage |
 
 ## Environment variables
 

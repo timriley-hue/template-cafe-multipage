@@ -3,5 +3,6 @@
   "blog": true,
   "gallery": true,
   "tableBooking": false,
-  "orderOnline": false
+  "orderOnline": false,
+  "clientEditing": false
 }

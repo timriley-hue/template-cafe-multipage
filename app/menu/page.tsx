@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
-import menu from "@/content/menu.json";
 import site from "@/content/site.json";
+import { getMenu } from "@/lib/content";
 
 export const metadata: Metadata = { title: `Menu — ${site.name}` };
 
@@ -10,13 +10,12 @@ const dietaryColours: Record<string, string> = {
   "gluten-free": "bg-yellow-100 text-yellow-800",
 };
 
-export default function MenuPage() {
+export default async function MenuPage() {
+  const menu = await getMenu();
+
   return (
     <div className="max-w-3xl mx-auto px-4 py-16">
-      <h1
-        className="text-4xl font-bold mb-2 text-[var(--color-brand-dark)]"
-        style={{ fontFamily: "var(--font-heading)" }}
-      >
+      <h1 className="text-4xl font-bold mb-2 text-[var(--color-brand-dark)]" style={{ fontFamily: "var(--font-heading)" }}>
         Menu
       </h1>
       <p className="text-gray-500 text-sm mb-12">Prices include VAT. Menu changes seasonally.</p>
@@ -24,10 +23,7 @@ export default function MenuPage() {
       <div className="space-y-14">
         {menu.categories.map((cat) => (
           <section key={cat.name}>
-            <h2
-              className="text-xl font-bold border-b-2 border-[var(--color-brand)] pb-2 mb-6 text-[var(--color-brand-dark)]"
-              style={{ fontFamily: "var(--font-heading)" }}
-            >
+            <h2 className="text-xl font-bold border-b-2 border-[var(--color-brand)] pb-2 mb-6 text-[var(--color-brand-dark)]" style={{ fontFamily: "var(--font-heading)" }}>
               {cat.name}
             </h2>
             <ul className="space-y-3">
@@ -36,10 +32,7 @@ export default function MenuPage() {
                   <div className="flex items-center gap-3 flex-wrap">
                     <span className="font-medium">{item.name}</span>
                     {item.dietary.map((tag) => (
-                      <span
-                        key={tag}
-                        className={`text-xs px-2 py-0.5 rounded-full font-medium ${dietaryColours[tag] ?? "bg-gray-100 text-gray-700"}`}
-                      >
+                      <span key={tag} className={`text-xs px-2 py-0.5 rounded-full font-medium ${dietaryColours[tag] ?? "bg-gray-100 text-gray-700"}`}>
                         {tag}
                       </span>
                     ))}
