@@ -59,6 +59,7 @@ Edit `content/modules.json` to turn features on or off:
 | `googleReviews` | Show live Google reviews on the homepage |
 | `blog` | Show the News page and nav link |
 | `gallery` | Show the Gallery page and nav link |
+| `googleMap` | Show a Google Maps embed on the Contact page (no API key needed) |
 | `tableBooking` | Enable table booking embed (for brunch/tea room cafes) |
 | `orderOnline` | Show an order online link in the nav |
 | `clientEditing` | Enable Supabase-backed admin panel for client self-editing (see Step 7) |
