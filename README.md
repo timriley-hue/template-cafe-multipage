@@ -92,7 +92,7 @@ If they have no existing website, edit `content/theme.json` directly:
 }
 ```
 
-Leave `googlePlaceId` empty for now — you'll fill it in at Step 6.
+Leave `googlePlaceId` and `fhrsId` empty for now — you'll fill them in at Steps 6 and 7.
 
 **`content/hours.json`** — opening times:
 
@@ -195,7 +195,26 @@ Reviews below 4 stars are automatically filtered out.
 
 ---
 
-## Step 7 — Choose which sections to show
+## Step 7 — Set up the Food Hygiene Rating badge
+
+The footer automatically shows the client's live Food Hygiene Rating, pulled directly from the Food Standards Agency. It updates automatically whenever their rating changes — no manual work needed.
+
+Find their FHRS ID:
+1. Go to [ratings.food.gov.uk](https://ratings.food.gov.uk)
+2. Search for the business by name and town
+3. Open their listing — copy the number from the URL (e.g. `ratings.food.gov.uk/business/en-GB/123456` → ID is `123456`)
+
+Add it to `content/site.json`:
+
+```json
+"fhrsId": "123456"
+```
+
+Leave it empty (`""`) to hide the badge.
+
+---
+
+## Step 8 — Choose which sections to show
 
 Edit `content/modules.json`:
 
@@ -223,7 +242,7 @@ Edit `content/modules.json`:
 
 ---
 
-## Step 8 — Wire up the contact form
+## Step 9 — Wire up the contact form
 
 The contact form HTML is ready on the Contact page. You need to connect it to a form handling service per client. Recommended options:
 
@@ -234,7 +253,7 @@ This is done when setting up the live site, not in the template.
 
 ---
 
-## Step 9 — Client self-editing (optional, Tier 2 upsell)
+## Step 10 — Client self-editing (optional, Tier 2 upsell)
 
 Skip this step if you are managing content for the client yourself.
 
@@ -267,7 +286,7 @@ The client can now log in at `yourdomain.com/admin` to manage their content.
 
 ---
 
-## Step 10 — Set up analytics
+## Step 11 — Set up analytics
 
 Add analytics when deploying — not in the template. Recommended:
 
@@ -276,7 +295,7 @@ Add analytics when deploying — not in the template. Recommended:
 
 ---
 
-## Step 11 — Review everything locally
+## Step 12 — Review everything locally
 
 Go through every page on both desktop and mobile before deploying:
 
@@ -292,7 +311,7 @@ Go through every page on both desktop and mobile before deploying:
 
 ---
 
-## Step 12 — Deploy to Vercel
+## Step 13 — Deploy to Vercel
 
 1. Push the client repo to GitHub if not already
 2. Go to [vercel.com](https://vercel.com) → **Add New Project** → Import the repo
@@ -306,7 +325,7 @@ Vercel gives you a preview URL immediately. Share with the client for sign-off b
 
 ---
 
-## Step 13 — Connect the client's domain
+## Step 14 — Connect the client's domain
 
 1. In Vercel, go to the project → **Domains** → add their domain
 2. In their domain registrar (or Cloudflare), add the DNS records Vercel shows you
@@ -315,7 +334,7 @@ Vercel gives you a preview URL immediately. Share with the client for sign-off b
 
 ---
 
-## Step 14 — Pre-launch checklist
+## Step 15 — Pre-launch checklist
 
 - [ ] All pages reviewed on mobile and desktop
 - [ ] Nav links working; correct pages shown per modules
