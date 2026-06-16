@@ -2,6 +2,7 @@
   "googleReviews": true,
   "blog": true,
   "gallery": true,
+  "googleMap": true,
   "tableBooking": false,
   "orderOnline": false,
   "clientEditing": false

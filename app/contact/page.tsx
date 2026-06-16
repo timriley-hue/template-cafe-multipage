@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import site from "@/content/site.json";
 import hours from "@/content/hours.json";
+import modules from "@/content/modules.json";
 
 export const metadata: Metadata = { title: `Contact — ${site.name}` };
 
@@ -47,6 +48,19 @@ export default function ContactPage() {
             {hours.notes && <p className="text-xs text-gray-400 mt-3">{hours.notes}</p>}
           </div>
         </div>
+
+        {/* Google Map */}
+        {modules.googleMap && (
+          <div className="mb-16 rounded-2xl overflow-hidden border border-gray-100 shadow-sm h-72">
+            <iframe
+              title="Map"
+              width="100%"
+              height="100%"
+              loading="lazy"
+              src={`https://maps.google.com/maps?q=${encodeURIComponent(site.address)}&output=embed`}
+            />
+          </div>
+        )}
 
         {/* Contact form */}
         <div className="bg-[var(--color-accent)]/25 rounded-3xl p-8 md:p-10">
